@@ -37,3 +37,13 @@ def test_first_row_is_correct():
               
     #Assert
     assert output[0] == expected_output
+
+def test_empty_lists_ignored():
+    #Arrange - defining out filenames, variables, functions etc.
+    filename = "results.csv"
+
+    #Act - calling a e.g. function
+    output = read_csv(filename)
+              
+    #Assert
+    assert output not in ['', '', '', '', '', '']
