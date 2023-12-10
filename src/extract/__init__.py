@@ -3,4 +3,8 @@ def read_csv(filename):
     with open(filename, 'r') as f:
         for line in f.readlines():
             rows.append(line.strip().split(','))
-        return rows
+        
+    #TICKET 3: Ignore any empty lists
+    removed_empty_lists = [line for line in rows if line != ['', '', '', '', '', '']]
+
+    return rows
