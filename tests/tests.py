@@ -1,5 +1,6 @@
 from extract import read_csv
 
+#TICKET 1:
 """
 The results.csv data file can be successfully processed into an array.
 ● Each line of the file is read into a new array item.
@@ -38,6 +39,7 @@ def test_first_row_is_correct():
     #Assert
     assert output[0] == expected_output
 
+#TICKET 3: ignore empty lists
 def test_empty_lists_ignored():
     #Arrange - defining out filenames, variables, functions etc.
     filename = "results.csv"
@@ -47,3 +49,15 @@ def test_empty_lists_ignored():
               
     #Assert
     assert output not in ['', '', '', '', '', '']
+
+#TICKET 2: Remove duplicate lists
+def test_duplicate_lists_removed():
+    #Arrange - defining out filenames, variables, functions etc.
+    filename = "results.csv"
+
+    #Act - calling a e.g. function
+    output = read_csv(filename)
+    duplicates = any(output.count(row) > 1 for row in output)
+
+    #Assert
+    assert not duplicates

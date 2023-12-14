@@ -1,3 +1,4 @@
+
 #TICKET 1: 
 def read_csv(filename):
     rows = []
