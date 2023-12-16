@@ -38,6 +38,7 @@ def test_first_row_is_correct():
     #Assert
     assert output[0] == expected_output
 
+#TICKET 3 TEST
 def test_empty_lists_ignored():
     #Arrange - defining out filenames, variables, functions etc.
     filename = "results.csv"
@@ -47,3 +48,14 @@ def test_empty_lists_ignored():
               
     #Assert
     assert output not in ['', '', '', '', '', '']
+
+#TICKET 2 TEST
+def test_duplicates_removed():
+	#Arrange - defining out filenames, variables, functions etc.
+    filename = "results.csv"
+	
+    #Act - calling an e.g. function
+    output = read_csv(filename)
+    duplicates = any(output.count(row) > 1 for row in output)
+	
+    assert not duplicates
