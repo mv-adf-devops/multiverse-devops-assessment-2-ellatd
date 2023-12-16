@@ -1,3 +1,4 @@
+import csv
 
 #TICKET 1: 
 def read_csv(filename):
@@ -28,4 +29,10 @@ def read_csv(filename):
         if i[5] != '' and (int(i[5]) >=1 and int(i[5]) <= 10):
             answer_3s_validated.append(i)
 
+    #TICKET 6: read results into new csv file
+    output_filename = "clean_results.csv"
+    with open(output_filename, 'w') as output_filename:
+        for line in answer_3s_validated:
+            output_filename.write(','.join(line) + '\n')
+    
     return answer_3s_validated

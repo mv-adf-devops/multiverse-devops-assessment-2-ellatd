@@ -1,4 +1,5 @@
 from extract import read_csv
+import os
 
 #TICKET 1:
 """
@@ -93,3 +94,15 @@ def test_answer_3s_validated():
             invalid_answers += 1
     # Assert
     assert invalid_answers == 0
+
+#TICKET 6: Output to a new cleansed csv file
+def test_output_exists():
+    #Arrange
+    filename = "results.csv"
+    clean_filename = "clean_results.csv"
+
+    #Act
+    output = read_csv(filename)
+    
+    #Assert
+    assert os.path.isfile(clean_filename), f"Cleansed File '{clean_filename}' does not exist."
