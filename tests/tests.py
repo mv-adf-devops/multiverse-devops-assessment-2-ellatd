@@ -28,22 +28,18 @@ def test_list_not_empty():
     #Assert
     assert len(output) > 0
 
-def test_first_row_is_correct():
-     #Arrange - defining out filenames, variables, functions etc.
-    filename = "results.csv"
-    expected_output = ["user_id", "First_name", "Last_name", "answer_1", "answer_2", "answer_3"]
+#def test_first_row_is_correct():
+    #Arrange - defining out filenames, variables, functions etc.
+    #filename = "results.csv"
+    #expected_output = ["user_id", "first_name", "last_name", "answer_1", "answer_2", "answer_3"]
 
-     #Act - calling a e.g. function
-    output = read_csv(filename)
+    #Act - calling a e.g. function
+    #output = read_csv(filename)
               
     #Assert
-    assert output[0] == expected_output
+    #assert output[0] == expected_output
 
-<<<<<<< HEAD
-#TICKET 3: ignore empty lists
-=======
 #TICKET 3 TEST
->>>>>>> origin
 def test_empty_lists_ignored():
     #Arrange - defining out filenames, variables, functions etc.
     filename = "results.csv"
@@ -54,7 +50,6 @@ def test_empty_lists_ignored():
     #Assert
     assert output not in ['', '', '', '', '', '']
 
-<<<<<<< HEAD
 #TICKET 2: Remove duplicate lists
 def test_duplicate_lists_removed():
     #Arrange - defining out filenames, variables, functions etc.
@@ -67,7 +62,7 @@ def test_duplicate_lists_removed():
     #Assert
     assert not duplicates
 
-#TICKET #4: Capitalise user name fields
+#TICKET 4: Capitalise user name fields
 def test_capitalised_names():
     #Arrange - defining out filenames, variables, functions etc.
     filename = "results.csv"
@@ -80,18 +75,21 @@ def test_capitalised_names():
             failures = failures + 1
         if line[2] != line[2].capitalize():
             failures = failures + 1
-
-    # Assert
+    #Assert
     assert failures == 0
-=======
-#TICKET 2 TEST
-def test_duplicates_removed():
-	#Arrange - defining out filenames, variables, functions etc.
+
+#TICKET 5 TEST
+def test_answer_3s_validated():
+    #Arrange - defining out filenames, variables, functions etc.
     filename = "results.csv"
-	
-    #Act - calling an e.g. function
+
+    #Act - calling a e.g. function
     output = read_csv(filename)
-    duplicates = any(output.count(row) > 1 for row in output)
-	
-    assert not duplicates
->>>>>>> origin
+    invalid_answers = 0
+    for line in output[1:]:
+        if int(line[5]) < 1:
+            invalid_answers += 1
+        if int(line[5]) > 10:
+            invalid_answers += 1
+    # Assert
+    assert invalid_answers == 0

@@ -21,5 +21,11 @@ def read_csv(filename):
         line[1] = line[1].capitalize()
         line[2] = line[2].capitalize()
         capitalised_user_names.append(line)
-                                
-    return capitalised_user_names
+
+    #TICKET 5: Validate answer 3s are correct
+    answer_3s_validated = []
+    for i in capitalised_user_names[1:]:
+        if i[5] != '' and (int(i[5]) >=1 and int(i[5]) <= 10):
+            answer_3s_validated.append(i)
+
+    return answer_3s_validated
