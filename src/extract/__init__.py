@@ -11,7 +11,7 @@ def read_csv(filename):
     for line in rows:
         if line[0] not in [i[0] for i in non_duplicates_list]:
             non_duplicates_list.append(line)
-    
+   
     #TICKET 3: ignore any empty lists
     removed_empty_lists = [line for line in non_duplicates_list if line != ['', '', '', '', '', '']]
     
