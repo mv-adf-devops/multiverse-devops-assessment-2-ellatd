@@ -31,7 +31,7 @@ def test_list_not_empty():
 def test_first_row_is_correct():
      #Arrange - defining out filenames, variables, functions etc.
     filename = "results.csv"
-    expected_output = ["user_id", "first_name", "last_name", "answer_1", "answer_2", "answer_3"]
+    expected_output = ["user_id", "First_name", "Last_name", "answer_1", "answer_2", "answer_3"]
 
      #Act - calling a e.g. function
     output = read_csv(filename)
@@ -61,3 +61,20 @@ def test_duplicate_lists_removed():
 
     #Assert
     assert not duplicates
+
+#TICKET #4: Capitalise user name fields
+def test_capitalised_names():
+    #Arrange - defining out filenames, variables, functions etc.
+    filename = "results.csv"
+
+    #Act - calling a e.g. function
+    output = read_csv(filename)
+    failures = 0
+    for line in output:
+        if line[1] != line[1].capitalize():
+            failures = failures + 1
+        if line[2] != line[2].capitalize():
+            failures = failures + 1
+
+    # Assert
+    assert failures == 0
