@@ -1,0 +1,30 @@
+name: Multiverse CI/CD Workflow #name it will appear as in our GUI interface
+
+on:
+  push:
+  pull_request:
+    types: [approved, opened, edited, reopened]
+  workflow_dispatch:
+
+#^ will run on a push request (when we push to the repository), 
+#any of the listed types of pull requests, 
+#or a workflow dispatch (dispatching the workflow manually - i.e. run this thing when we press a button
+
+jobs: #specifies the jobs we want to run
+  pytest: #gives it one job called pytest
+    name: Test the Survey Application #again gives it a name that will appear in the GUI
+    runs-on: ubuntu-latest #specifies the OS the 'container' created by GitHub actions will run on
+    steps:
+    - name: Checkout the repository #always need to do this whenever we run anything
+      uses: actions/checkout@v4 #see github.com/actions to check latest version of checkout
+    - name: Set up Python # installs python
+      uses: actions/setup-python@v4 #again see webpage for latest version (search 'setup-python' in repositories bar)
+      with:
+        python-version: '3.x' #and again for latest version of python
+    - name: Update pip
+      run: python -m pip install --upgrade pip #run puts it straight into the cmd line and runs it for us
+    - name: Install Pytest
+      run: pip install pytest pytest-cov
+    - name: Run Pytest
+      run: pytest
+      working-directory: . # dot to signal which directory we're working in (which is the one we're already in)
