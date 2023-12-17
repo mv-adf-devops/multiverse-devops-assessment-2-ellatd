@@ -29,7 +29,7 @@ jobs: #specifies the jobs we want to run
       run: pytest
       working-directory: . # dot to signal which directory we're working in (which is the one we're already in)
 
-terraform:
+  terraform:
     name: Run Terraform
     runs-on: ubuntu-latest
     defaults:
