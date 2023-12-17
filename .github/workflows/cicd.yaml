@@ -51,7 +51,7 @@ jobs: #specifies the jobs we want to run
       run: terraform init
     - name: Plan changes
       run: terraform plan
-      - name: Apply changes
+    - name: Apply changes
       run: terraform apply -auto-approve
       if: |
         github.ref_name == 'main' &&
