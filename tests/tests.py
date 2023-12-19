@@ -1,4 +1,4 @@
-from extract import read_csv
+from extract import read_csv, clean_csv
 import os
 
 #TICKET 1:
@@ -106,3 +106,12 @@ def test_output_exists():
     
     #Assert
     assert os.path.isfile(clean_filename), f"Cleansed File '{clean_filename}' does not exist."
+
+#TICKET 7: Final output script
+def test_final_output_script(capfd):
+	clean_filename = "clean_results.csv"
+	
+	clean_csv(clean_filename)
+	
+	captured = capfd.readouterr()
+	print(captured.out.strip())

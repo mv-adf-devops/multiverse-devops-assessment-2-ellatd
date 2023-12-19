@@ -36,3 +36,11 @@ def read_csv(filename):
             output_filename.write(','.join(line) + '\n')
     
     return answer_3s_validated
+
+def clean_csv(clean_filename = "clean_results.csv"):
+	with open(clean_filename, 'r') as clean_file:
+		header = clean_file.readline().strip().split(',')
+		print(f"{header[0]:<10} {header[1]:<15} {header[2]:<15} {header[3]:<10} {header[4]:<10} {header[5]:<10}")
+		for line in clean_file:
+			values = line.strip().split(',')
+			print(f"{values[0]:<10} {values[1]:<15} {values[2]:<15} {values[3]:<10} {values[4]:<10} {values[5]:<10}")
