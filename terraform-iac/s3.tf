@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "this" {
-  bucket_prefix = "assessment-bucket-your-ellatd"
+  bucket_prefix = "assessment-bucket-ellatd"
   force_destroy = true
 
   tags = {
